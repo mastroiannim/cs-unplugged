@@ -108,6 +108,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.csunplugged.org",
     "https://cs-unplugged-dev.csse.canterbury.ac.nz",
     "https://cs-unplugged.localhost",
+    "https://*.app.github.dev",
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
