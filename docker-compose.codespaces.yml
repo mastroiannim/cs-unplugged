@@ -1,0 +1,7 @@
+services:
+  django:
+    ports:
+      - "8000:8000"
+  docs:
+    ports:
+      - "7000:7000"
