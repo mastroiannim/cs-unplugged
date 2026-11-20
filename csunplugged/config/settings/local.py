@@ -109,3 +109,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://cs-unplugged-dev.csse.canterbury.ac.nz",
     "https://cs-unplugged.localhost",
 ]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
