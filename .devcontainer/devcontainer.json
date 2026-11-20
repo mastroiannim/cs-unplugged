@@ -1,6 +1,5 @@
 {
   "name": "CS Unplugged + JOBE Lab",
-  "image": "://microsoft.com",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
