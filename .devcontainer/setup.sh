@@ -8,6 +8,8 @@ echo "2. Configurazione dell'indirizzo JOBE in CS Unplugged..."
 # Punta la chiamata interna di jobe_proxy al container JOBE locale
 find csunplugged -type f -name "*.py" -exec sed -i 's|https://canterbury.ac.nz|http://docker.internal|g' {} +
 
+docker network create uccser-development-stack
+
 echo "3. Avvio e inizializzazione di CS Unplugged..."
 chmod +x ./dev
 ./dev start
