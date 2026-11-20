@@ -65,6 +65,7 @@ ALLOWED_HOSTS = [
     "cs-unplugged.localhost",
     "localhost",
     "django",
+    ".app.github.dev"
 ]
 
 
