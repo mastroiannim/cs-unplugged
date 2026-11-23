@@ -1,18 +1,14 @@
 #!/bin/bash
-set -e
+until docker info >/dev/null 2>&1; do sleep 1; done
+docker start jobe >/dev/null 2>&1 || true
+docker network connect uccser-development-stack jobe 2>/dev/null || true
 
-echo "1. Avvio del server di esecuzione JOBE..."
-docker run -d -p 4000:80 --name jobe --restart unless-stopped trampgeek/jobeinabox:latest
+nohup ./dev start > /tmp/dev.log 2>&1 &
 
-echo "2. Configurazione dell'indirizzo JOBE in CS Unplugged..."
-# Punta la chiamata interna di jobe_proxy al container JOBE locale
-find csunplugged -type f -name "*.py" -exec sed -i 's|https://canterbury.ac.nz|http://docker.internal|g' {} +
-
-docker network create uccser-development-stack
-
-echo "3. Avvio e inizializzazione di CS Unplugged..."
-chmod +x ./dev
-./dev start
-./dev update
-
-echo "Ambiente pronto!"
+# Public ports (needs GH_TOKEN secret); retries until the ports are forwarded
+(
+  for i in $(seq 1 60); do
+    gh codespace ports visibility 8000:public -c "$CODESPACE_NAME" >/dev/null 2>&1 && exit 0
+    sleep 5
+  done
+) > /tmp/public-ports.log 2>&1 &
