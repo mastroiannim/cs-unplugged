@@ -9,7 +9,7 @@
   },
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "postStartCommand": "docker start jobe || true && ./dev start",
-  "forwardPorts": [8000, 4000],
+  "forwardPorts": [8000, 4000, 7000],
   "portsAttributes": {
     "8000": {
       "label": "CS Unplugged Web",

@@ -49,7 +49,7 @@ defhelp help 'View all help.'
 # Start development environment
 cmd_start() {
   echo "Creating systems..."
-  docker compose -f docker-compose.local.yml up -d
+  docker compose -f docker-compose.local.yml -f docker-compose.codespaces.yml up -d
   # Alert user that system is ready
   echo -e "\n${SUCCESS}System is up!${NC}"
   echo -e "Run the command ${CODE}./dev update${NC} to load content."
