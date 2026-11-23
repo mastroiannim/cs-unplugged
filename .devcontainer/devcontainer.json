@@ -3,21 +3,12 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "hostRequirements": {
-    "cpus": 4,
-    "memory": "8gb"
-  },
+  "hostRequirements": { "cpus": 4, "memory": "8gb" },
   "postCreateCommand": "bash .devcontainer/setup.sh",
-  "postStartCommand": "docker start jobe || true && ./dev start",
-  "forwardPorts": [8000, 4000, 7000],
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [8000, 4000],
   "portsAttributes": {
-    "8000": {
-      "label": "CS Unplugged Web",
-      "onAutoForward": "openBrowser"
-    },
-    "4000": {
-      "label": "JOBE Execution Server",
-      "onAutoForward": "silent"
-    }
+    "8000": { "label": "CS Unplugged Web", "onAutoForward": "openBrowser" },
+    "4000": { "label": "JOBE", "onAutoForward": "silent" }
   }
 }
